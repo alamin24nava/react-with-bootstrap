@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Product from './Product';
 import ProductModel from '../../Model/ProductModel';
-import AddProduct from './AddProduct';
+
 
 const productList = [
   ProductModel(uuidv4(), 'La Casa De Papel STyle Hacker mukhosh', 'La Casa De Papel STyle Hacker mukhosh', 100, 'https://static-01.daraz.com.bd/p/aadc46bc4a2a6348b6bcd8881bb202c0.jpg_200x200q80-product.jpg_.webp'),
@@ -10,8 +10,12 @@ const productList = [
   ProductModel(uuidv4(), 'Airbuds Pro Game Console Premium Silicon Cover Case', 'Airbuds Pro Game Console Premium Silicon Cover Case', 8000, 'https://static-01.daraz.com.bd/p/613395e2508e179dafd41519046351a8.jpg_200x200q80-product.jpg_.webp'),
   ProductModel(uuidv4(), 'Bike Motorcycle Cycling LED 4 Color Bike Wheel Tire Light Tire Valve Dust Cap Valve Core Spoke Light', 'Bike Motorcycle Cycling LED 4 Color Bike Wheel Tire Light Tire Valve Dust Cap Valve Core Spoke Light', 8700,'' ),
 ]
-export default function Products() {
-  const [newProduct, setNewProduct] = React.useState(productList)
+
+export default function Products(props) {
+  // const {productTitle, productDes, productPrice, productPhoto} = props.AddProduct
+  const newProduct = props.AddProduct
+  console.log(newProduct);
+
   return (
     <div className='row'>
       {
@@ -20,7 +24,7 @@ export default function Products() {
       
       {
         productList.map((singleProduct) => (
-          <Product key={uuidv4()} product={singleProduct} />
+          <Product key={uuidv4()} product={singleProduct}/>
         ))
       }
       

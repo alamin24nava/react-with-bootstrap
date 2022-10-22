@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
-export default function AddProduct() {
+export default function AddProduct(props) {
     const [product, setProduct] = useState({productTitle:'', productDes:'',productPrice:'',productPhoto:''})
-    const {productTitle, productDes, productPrice, productPhoto} = product
+    // const {productTitle, productDes, productPrice, productPhoto} = product
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        console.log(product);
+        props.onData(product)
         console.log('submited');
     }
     const handleChange = (e) => {
@@ -14,6 +14,9 @@ export default function AddProduct() {
         let feildName = e.target.name;
         setProduct({...product, [feildName]:value})
     }
+    // props.onData(product)
+
+
     return (
     <div>
         <h4>Add Product</h4>
